@@ -1,0 +1,386 @@
+::-webkit-scrollbar {
+    width: 0.8vw;
+    background: #0e0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
+::-webkit-scrollbar {
+    width: 0.6vw;
+}
+::-webkit-scrollbar:hover {
+    width: 0.6vw;
+    transition: width 0.3s ease;
+}
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24"><path d="M12 8l6 6H6z"/></svg>') center no-repeat;
+    background-size: 50%;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24"><path d="M12 16l-6-6h12z"/></svg>') center no-repeat;
+    background-size: 50%;
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24"><path d="M8 12l6-6v12z"/></svg>') center no-repeat;
+    background-size: 50%;
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="gray" viewBox="0 0 24 24"><path d="M16 12l-6 6V6z"/></svg>') center no-repeat;
+    background-size: 50%;
+}
+
+::-webkit-scrollbar-button:hover {
+    background: darkgray;
+}
+
+body {
+    background-color: #161616;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    height: 48px;
+    width: 48px;
+    margin-right: 12px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffd900;
+}
+.films-list {
+    display: flex;
+    width: 800px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.film-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 360px;
+    width: 240px;
+    background-color: red;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.film-card:hover {
+    transform: scale(1.05);
+}
+
+.film-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+@keyframes zoomBackground {
+    0% {
+        background-size: 60%;
+        background-position: center;
+    }
+    50% {
+        background-size: 70%;
+        background-position: center center;
+    }
+    100% {
+        background-size: 60%;
+        background-position: center;
+    }
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url('http://localhost:8000/assets/images/star.png');
+    background-size: cover;
+    background-position: center;
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 70vw;
+    height: 80vh;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.3s ease-in-out;
+    align-items: flex-start; 
+    border: 1px solid white;
+    box-sizing: border-box;
+    animation: zoomBackground 10s infinite ease-in-out; 
+}
+
+.modal-content h3 {
+    color: #FFD700 !important;
+}
+.modal-content h4 {
+    width: 100%;
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: #dfc012;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.4);
+    padding: 8px 0;
+}
+.modal-content h4:hover {
+    color: #FF6347;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 99, 71, 0.8);
+}
+
+.modal-content h1 {
+    font-size: 32px;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.modal-content img {
+    height: 150px;
+    width: 300px;
+    border-radius: 8px;
+    position: absolute;  
+    right: 100px;           
+    top: 350px;           
+}
+
+.modal-content p {
+    font-size: 2vw;  
+    color: #f5f5f5;
+    line-height: 1.8;
+    text-align: left;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    margin: 16px 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.modal-content p strong {
+    color: #FFD700;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center; 
+    margin-bottom: 50px;
+    grid-column: span 4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.modal-content p span {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(233, 210, 2, 0.9);
+}
+
+
+@media (max-width: 1600px){
+    .modal-content img {
+        top: 500px;
+    }
+    .modal-content p {
+        font-size: 1.8vw;
+    }
+}
+@media (max-width: 1420px){
+    .modal-content img{
+        top: 430px;
+    }
+}
+@media (max-width: 1200px){
+    .modal-content img{
+        right: 50px;
+        top: 420px;
+        height: 141px;
+        width: 250px;
+    }
+    .modal-content p {
+        font-size: 1.5vw;
+    }
+}
+@media (max-width: 1200px){
+    .modal-content img{
+        
+        top: 470px;
+        
+    }
+}
+
+@media (max-width: 1024px) {
+    .films-list {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .film-card {
+        height: 320px;
+        width: 200px;
+    }
+
+    .modal-content {
+        width: 90vw;
+        height: 70vh;
+    }
+
+    .modal-content h1 {
+        font-size: 28px;
+    }
+
+    .modal-content p {
+        font-size: 1.2vw;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .modal-content p strong {
+      
+        
+        grid-column: span 3;
+        
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content img{
+        right: 50px;
+        top: 500px;
+        height: 141px;
+        width: 250px;
+    }
+    
+    
+    .films-list {
+        gap: 12px;
+    }
+
+    .film-card {
+        height: 280px;
+        width: 180px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin: 0 0 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .modal-content {
+        width: 95vw;
+        height: 65vh;
+    }
+   
+    .modal-content p {
+        font-size: 1vw;
+        line-height: 1.5;
+        
+    }
+}
+@media (max-width: 660px) {
+    .modal-content img {
+        display: block;            
+        margin: auto;
+        height: 50%;              
+        margin-bottom: 20px;      
+        position: relative;        
+        right: auto;               
+        top: auto;                
+    }
+    .modal-content p {
+        font-size: 0.9vw;
+        grid-template-columns: repeat(2, 1fr);
+    }
+   
+    .modal-content p strong {
+      
+        grid-column: span 2;
+        
+    }
+    .modal-content h4{
+        font-size: 20px;
+        text-align: center;
+    }
+}
+@media (max-width: 480px) {
+    .film-card {
+        height: 240px;
+        width: 150px;
+    }
+
+    .modal-content {
+        width: 100vw;
+        height: 60vh;
+        padding: 16px;
+    }
+
+    .modal-content h1 {
+        font-size: 24px;
+    }
+
+    .modal-content p {
+        font-size: 0.8vw;
+       
+        margin-right: 0;
+        text-align: justify;
+    }
+}
