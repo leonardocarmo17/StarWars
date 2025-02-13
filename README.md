@@ -1,39 +1,84 @@
-<body style="background-color: #0d0d0d; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px;">
-  <h1 style="background-color: #1a1a1a; padding: 20px; text-align: center; border-radius: 12px; box-shadow: 0 0 20px #fff; color: #00bcd4;">Documentação do Projeto PHP MVC - Temática Star Wars</h1>
+# Documentação do Projeto PHP MVC - Temática Star Wars
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Introdução</h2>
-  <p style="line-height: 1.8; color: #f5f5f5;">Este projeto temático de Star Wars utiliza uma API para buscar informações sobre os filmes, como personagens, data de lançamento, produtores, entre outros...</p>
-  <hr style="border: 1px solid #00bcd4;">
+## Introdução  
+Este projeto temático de Star Wars utiliza uma API para buscar informações sobre os filmes, como personagens, data de lançamento, produtores, entre outros. A principal funcionalidade é permitir que o usuário clique nos cards de filmes para exibir informações detalhadas sobre o filme selecionado.  
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Arquitetura</h2>
-  <p style="line-height: 1.8; color: #f5f5f5;">O projeto segue o padrão MVC (Model-View-Controller)...</p>
+---
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Instalação</h2>
-  <ul style="line-height: 1.8; color: #f5f5f5;">
-    <li>PHP 7.4 ou superior</li>
-    <li>MySQL Workbench</li>
-  </ul>
-  <ol style="line-height: 1.8; color: #f5f5f5;">
-    <li>Baixe e extraia o projeto...</li>
-    <li>Configure o PATH...</li>
-  </ol>
+## Arquitetura  
+O projeto segue o padrão MVC (Model-View-Controller). A pasta **Core** funciona como o núcleo do projeto, contendo ferramentas essenciais como:  
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Detalhes Técnicos</h2>
-  <ul style="line-height: 1.8; color: #f5f5f5;">
-    <li>4 Controllers: principal, banco de dados, erro 404, API</li>
-    <li>Models para tradução, filmes e logs</li>
-    <li>Views para interface</li>
-  </ul>
+- **Banco de Dados**: Configuração e conexão.  
+- **App**: Gerencia as rotas da URL.  
+- **Autoload**: Responsável por carregar automaticamente as classes necessárias sem precisar incluí-las manualmente em cada arquivo.  
+- **Controller**: Garante que as views sejam chamadas corretamente.  
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Banco de Dados</h2>
-  <p style="line-height: 1.8; color: #f5f5f5;">Registros de ID, Data e Filme acessado.</p>
+O fluxo de dados no projeto é simples: a view faz uma requisição, que o controller recebe e repassa ao model. O model busca as informações necessárias e devolve ao controller, que então envia os dados de volta à view. Na página principal, são utilizados 3 models e 2 controllers para gerenciar as informações de forma eficiente.  
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Implementações Especiais</h2>
-  <ul style="line-height: 1.8; color: #f5f5f5;">
-    <li>API interna para tradução</li>
-    <li>Registro de cliques via JavaScript e ApiController</li>
-  </ul>
+---
 
-  <h2 style="border-bottom: 2px solid #00bcd4; padding-bottom: 5px; color: #00bcd4;">Conclusão</h2>
-  <p style="line-height: 1.8; color: #f5f5f5;">Estrutura estável com possibilidade de melhorias futuras. <a href="http://starwars.great-site.net" style="color: #00bcd4; text-decoration: underline;">Link do projeto</a></p>
-</body>
+## Instalação  
+
+### Requisitos:  
+- PHP 7.4 ou superior.  
+- MySQL Workbench.  
+
+### Passos para instalar localmente:  
+1. Baixe e extraia o projeto em uma pasta.  
+2. Baixe o arquivo **tools** (localizado na pasta instruções) e exporte para `C:\tools`.  
+3. Configure o **PATH** no sistema para incluir `C:\tools`.  
+4. No MySQL Workbench, faça login localmente, abra o arquivo **db.sql** (na pasta instruções), copie o código e execute em uma aba logada.  
+5. Abra o projeto no Visual Studio Code e execute o servidor com o comando: php -S localhost:8000 -t public 
+6. No google ou qualquer navegador de sua preferência, acesse por localhost:8000
+
+   # Detalhes Técnicos
+
+
+## Controllers:
+Existem 4 controllers, incluindo:
+
+- Um para a página principal.
+- Outro para exibir o banco de dados.
+- Um para erros 404.
+- Outro sem retorno para a view.
+
+## Models:
+Gerenciam funcionalidades como:
+
+- Tradução.
+- Busca de informações de filmes.
+- Registro de cliques.
+
+## Views:
+Gerenciam a interface, como:
+
+- Página inicial.
+- Erros.
+- Dados do banco.
+
+## Banco de Dados:
+Contém registros com:
+
+- ID.
+- Data.
+- Filme acessado.
+
+---
+
+## Implementações Especiais
+
+- Para traduzir títulos e sinopses, foi criada uma API interna para evitar atrasos.
+- O registro de cliques nos cards é feito via JavaScript, que envia os dados para o ApiController, que registra no banco pelo logApi.
+
+---
+
+## Conclusão
+
+A estrutura do projeto está estável, permitindo futuras melhorias, como adição de mais conteúdo sobre o universo Star Wars.
+
+É possível ver o resultado visual clicando [aqui](http://starwars.great-site.net/). Uma limitação do host InfinityFree é o tempo de resposta. No código original no GitHub, o ApiModel usa multi-thread para reduzir o tempo de pesquisa de 8s para cerca de 3s. No host atual, o tempo médio esperado é de 8s devido às limitações.
+
+
+<div class="warning">
+  <strong>Atenção:</strong> Certifique-se de que todos os requisitos estão instalados corretamente antes de executar o projeto.
+</div>
