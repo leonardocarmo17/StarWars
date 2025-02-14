@@ -19,4 +19,12 @@ class Database {
             }
         }
     }
+    public function bancoDados(){
+        $sql = "SELECT * FROM logs";
+        $con = $this->connect();
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(); 
+        return $result;
+    }
 }
