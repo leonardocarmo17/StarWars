@@ -81,7 +81,21 @@ h1 {
     justify-content: center;
     gap: 16px;
 }
-
+.top-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+.top-link:hover {
+    background-color: #374151;
+}
 .film-card {
     cursor: pointer;
     display: flex;

@@ -14,12 +14,14 @@
 </head>
 <body>
     <div class="main">
+    <a href="<?=ROOT?>/dados" class="top-link">Dados</a>
+
         <div class="header">
             <img class="logo" src="<?=ROOT?>/assets/images/logo.png" alt="Logo"/>
             
             <h1>StarWars</h1>
         </div>
-       
+
         <div class="films-list" id="films-list"></div>
         <div class="modal" id="modal" onclick="hideModal(event)"> 
             
