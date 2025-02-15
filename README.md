@@ -76,10 +76,8 @@ Contém registros com:
 
 A estrutura do projeto está estável, permitindo futuras melhorias, como adição de mais conteúdo sobre o universo Star Wars.
 
-É possível ver o resultado visual clicando <a href="http://starwars.great-site.net/" target="_blank">aqui</a>.  
-Uma limitação do host InfinityFree é o tempo de resposta.  
-No código original no GitHub, o ApiModel usa multi-thread para reduzir o tempo de pesquisa de 8s para cerca de 3s.  
-No host atual, o tempo médio esperado é de 8s devido às limitações.
+
+É possível ver o resultado visual clicando <a href="http://starwars.great-site.net/" target="_blank">aqui</a>. Uma limitação do host InfinityFree é o tempo de resposta. No código original no GitHub, o ApiModel usa multi-thread para reduzir o tempo de pesquisa de 8s para cerca de 3s. No host atual, o tempo médio esperado é de 8s devido às limitações.
 
 
 <div class="warning">
